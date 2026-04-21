@@ -14,15 +14,15 @@ document.addEventListener('keydown', function(event){
         setTimeout(() => {
             personagem.classList.remove('personagem-pular');
 
-        }, 450);
+        }, 600);
     }
     if (event.key === "ArrowDown") {
-        personagem.style.height = '50px'
+        personagem.classList.add('personagem-abaixar')
     }
 });
 
 document.addEventListener("keyup", function(event) {
-    personagem.style.height = '100px'
+    personagem.classList.remove('personagem-abaixar');
 });
 
 
@@ -61,7 +61,7 @@ function teste() {
 
         case 2:
             span = 1
-            classeObstaculo  = 'obstaculo-mover2'        
+            classeObstaculo  = 'obstaculo-mover2'
         break;
 
         case 3:
