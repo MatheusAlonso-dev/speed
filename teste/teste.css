@@ -1,4 +1,5 @@
 body{
+  overflow: hidden;
  margin: 0;
 }
 .container{
@@ -13,12 +14,21 @@ body{
     height: 150px;
     width: 250px;
 }
+.personagemSubir{
+    animation: moverPersonagemCima 0.2s linear;
+    top: 240px;
+}
+.personagemDescer{
+    animation: moverPersonagemBaixo 0.2s linear;
+    top: 640px;
+}
 .personagem img{
     position: absolute;
     top: 40%;
     left: 35%;
     transform: translate(-50%, -50%);
 }
+
 
 .camada{
     position: absolute;
@@ -63,6 +73,11 @@ body{
         top: 0;
         animation: moverFundo 15s linear infinite;
 }
+.camada0{
+        background-image: url(img/naves.png);
+        top: 0;
+        animation: moverFundo 5s linear infinite;
+}
 @keyframes moverFundo {
   from {
     background-position: 0 0;
@@ -77,5 +92,23 @@ body{
   }
   to {
     background-position: 7660px 0;
+  }
+}
+
+@keyframes moverPersonagemCima{
+    from {
+    top: 640px;
+  }
+  to {
+    top: 240px;
+  }
+}
+
+@keyframes moverPersonagemBaixo{
+    from {
+    top: 240px;
+  }
+  to {
+    top: 640px;
   }
 }
