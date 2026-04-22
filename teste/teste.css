@@ -91,6 +91,7 @@ body{
   left: 7660px;
   position: absolute;
   z-index: 2;
+  border: solid 2px blue;
 }
 .obstaculoCima{
   top: 240px;
@@ -120,11 +121,11 @@ body{
 .obstaculoNivel7{
   animation: obstaculo 2.3s linear ;
 }
-.nave{
+.obstaculoImg{
       position: absolute;
     top: 40%;
     left: 35%;
-    transform: translate(-50%, -50%);
+    transform: translate(-20%, -50%);
 }
 @keyframes obstaculo{
   from{

@@ -63,7 +63,7 @@ function play(){
     let novo = document.createElement('div');
     let novoImg = document.createElement('img')
     novoImg.src = 'img/nave3.png'
-    novoImg.classList.add('nave')
+    novoImg.classList.add('obstaculoImg')
     novo.appendChild(novoImg)
     localObstaculo = gerarLocalObstaculo()
 
@@ -167,7 +167,11 @@ function play(){
             setTimeout(play, 0.5 * 1000);
         break;
     }
+    novo.addEventListener('animationend', () => {
+        novo.remove();
+    });
 }
+
 
 play()
 
