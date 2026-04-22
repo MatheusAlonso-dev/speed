@@ -1,6 +1,8 @@
 body{
   overflow: hidden;
  margin: 0;
+ color: white;
+ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .container{
     height: 1200px;
@@ -13,6 +15,7 @@ body{
     left: 300px;
     height: 150px;
     width: 250px;
+    z-index: 2;
 }
 .personagemSubir{
     animation: moverPersonagemCima 0.2s linear;
@@ -73,11 +76,65 @@ body{
         top: 0;
         animation: moverFundo 15s linear infinite;
 }
-.camada0{
-        background-image: url(img/naves.png);
-        top: 0;
-        animation: moverFundo 5s linear infinite;
+.camada-1{
+  height: 300px;
+  width: 300px;
+  border: solid 3px white;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
+
+.obstaculo{
+  height: 100px;
+  width: 100px;
+  left: 7660px;
+  position: absolute;
+  z-index: 2;
+}
+.obstaculoCima{
+  top: 240px;
+  
+}
+.obstaculoBaixo{
+  top: 640px;
+}
+.obstaculoNivel1{
+  animation: obstaculo 5s linear ;
+}
+.obstaculoNivel2{
+  animation: obstaculo 4s linear ;
+}
+.obstaculoNivel3{
+  animation: obstaculo 3s linear ;
+}
+.obstaculoNivel4{
+  animation: obstaculo 3s linear ;
+}
+.obstaculoNivel5{
+  animation: obstaculo 2.7s linear ;
+}
+.obstaculoNivel6{
+  animation: obstaculo 2.5s linear ;
+}
+.obstaculoNivel7{
+  animation: obstaculo 2.3s linear ;
+}
+.nave{
+      position: absolute;
+    top: 40%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+@keyframes obstaculo{
+  from{
+    left: 7660px; 
+  }
+  to{
+    left: -100px;
+  }
+}
+
 @keyframes moverFundo {
   from {
     background-position: 0 0;
@@ -111,4 +168,16 @@ body{
   to {
     top: 640px;
   }
+}
+.camada0{
+  z-index: 1;
+  transition: 3s;
+}
+.personagemCapote{
+    animation: girar360 1s linear;
+}
+
+@keyframes girar360 {
+    from { }
+    to   { transform: rotate(360deg); top: 200px; left:-500px;}
 }
