@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" id="container">
-        <div class="cenario" id="cenario">
-            <span class="pontos" id="pontos">teste</span>
-            <div class="camada camada3"></div>
-            <div class="camada camada2"></div>
-            <div class="camada camada1" id="chao"></div>
-            <div class="personagem" id="personagem"></div>
-            <div class="obstaculo obstaculo-mover" id="obstaculo"></div>
-            <div class="camada camada0" id="chao"></div>
+    <div id="container" class="container">
+        <div class="camada camada7"></div> <!-- fundo -->
+        <div class="camada camada6"></div>
+        <div class="camada camada5"></div> 
+        <div class="camada camada4"></div> <!-- predios -->
+        <div class="camada camada3"></div> <!-- naves -->
+        <div class="camada camada2"></div> <!-- predio -->
+        <div class="camada camada1"></div> <!-- ponte -->
+        <div id="personagem" class="personagem personagemDescer"><img id="personagemImg" src="img/personagem.png" alt=""></div>
+        <div id="camada0" class="camada camada0"></div>
+        <div class="camada-1">
+            <h1><span id="pontuacao"></span></h1>
+            <h1><span id="nivel"></span></h1>
         </div>
-
     </div>
-    
+
     <script src="script.js"></script>
+    
 </body>
 </html>

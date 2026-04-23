@@ -1,138 +1,184 @@
 body{
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
-    background-image: url('img/fundo.png');
-    background-size: 110%;
-    background-repeat: no-repeat; /* evita repetir */
-    background-color: darkslategray;
+  overflow: hidden;
+ margin: 0;
+ color: white;
+ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .container{
-    position: relative;
     height: 1200px;
     width: 100%;
-    border: solid 2px blue;
-    overflow: hidden;
-
 }
+
 .personagem{
-    border: solid 2px blue;
-    position: relative;
-    left: 250px;
-    height: 100px;
-    width: 100px;
-    background-image: url(img/personagem-1.png);
-    background-size: cover;       /* faz a imagem preencher a div */
-    background-position: center;  /* centraliza */
-    background-repeat: no-repeat; /* evita repetir */
+    position: absolute;
+    top: 640px;
+    left: 300px;
+    height: 150px;
+    width: 250px;
+    z-index: 3;
 }
-.personagem-abaixar{
-    height: 75.45px;
-    background-image: url(img/personagem-2.png);
-    background-size: cover;       /* faz a imagem preencher a div */
-    background-position: center;  /* centraliza */
-    background-repeat: no-repeat; /* evita repetir */
+.personagemSubir{
+    animation: moverPersonagemCima 0.2s linear;
+    top: 240px;
+}
+.personagemDescer{
+    animation: moverPersonagemBaixo 0.2s linear;
+    top: 640px;
+}
+.personagem img{
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
 
-}
-.personagem-pular{
-    animation: pular 0.6s linear;
-}
+
 .camada{
-    position: relative;
+    position: absolute;
     height: 100%;
     width: 100%;
-    background-size: cover;       /* faz a imagem preencher a div */
+    background-repeat: repeat-x;
+
     background-position: center;  /* centraliza */
+    
 }
+.camada7{
+        background-image: url(img/7.png);
+        top: 0;
+        animation: moverFundo 500s linear infinite;
+
+}
+.camada5{
+        background-image: url(img/5.png);
+        top: 0;
+        animation: moverNaves 6s linear infinite;
+
+}
+.camada4{
+        background-image: url(img/4.png);
+        top: 0;
+        animation: moverFundo 50s linear infinite;
+
+}
+.camada3{
+        background-image: url(img/3.png);
+        top: 0;
+        animation: moverNaves 2s linear infinite;
+
+}
+.camada2{
+        background-image: url(img/2.png);
+        top: 0;
+        animation: moverFundo 25s linear infinite;
+}
+.camada1{
+        background-image: url(img/ponte.png);
+        top: 0;
+        animation: moverFundo 15s linear infinite;
+}
+.camada-1{
+  height: 300px;
+  width: 300px;
+  border: solid 3px white;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
 .obstaculo{
-    position: absolute;
-    transition: left 0.5s ease;
-    height: 100px;
-    width: 50px;
-    background-color: black;
-    left: 105%;
-    bottom: 12%;
+  height: 100px;
+  width: 100px;
+  left: 7660px;
+  position: absolute;
+  z-index: 2;
+  border: solid 2px blue;
 }
-.obstaculo-mover1{
-    animation: mover 2s linear;
+.obstaculoCima{
+  top: 240px;
+  
 }
-.obstaculo-mover2{
-    animation: mover 1.2s linear;
+.obstaculoBaixo{
+  top: 640px;
 }
-.obstaculo-mover3{
-    animation: mover 1s linear;
+.obstaculoNivel1{
+  animation: obstaculo 5s linear ;
 }
-.obstaculo-mover4{
-    animation: mover 0.8s linear;
+.obstaculoNivel2{
+  animation: obstaculo 4s linear ;
 }
-.obstaculo-mover5{
-    animation: mover 0.7s linear;
+.obstaculoNivel3{
+  animation: obstaculo 3s linear ;
 }
-.obstaculo-mover6{
-    animation: mover 0.6s linear;
+.obstaculoNivel4{
+  animation: obstaculo 3s linear ;
 }
-.obstaculo-mover7{
-    animation: mover 0.5s linear;
+.obstaculoNivel5{
+  animation: obstaculo 2.7s linear ;
 }
-.obstaculo-mover8{
-    animation: mover 0.4s linear;
+.obstaculoNivel6{
+  animation: obstaculo 2.5s linear ;
 }
-.obstaculo-mover9{
-    animation: mover 0.3s linear;
+.obstaculoNivel7{
+  animation: obstaculo 2.3s linear ;
 }
-.obstaculo-mover10{
-    animation: mover 0.2s linear;
+.obstaculoImg{
+      position: absolute;
+    top: 40%;
+    left: 35%;
+    transform: translate(-20%, -50%);
 }
-.obstaculo-2{
-    height: 200px;
-    bottom: 200px;
+@keyframes obstaculo{
+  from{
+    left: 7660px; 
+  }
+  to{
+    left: -100px;
+  }
 }
-.cenario{
-    display: flex;
-    flex-direction: column-reverse;
-    height: 80%;
-}
-.chao{
-    height: 20%;
-    width: 100%;
-    background-image: url(img/estrada.png);
-    background-repeat: repeat-x; /* repete só na horizontal */
-    background-size: cover;       /* faz a imagem preencher a div */
-    background-position: center;  /* centraliza */
-    animation: moverFundo 9s linear infinite;
-}
+
 @keyframes moverFundo {
   from {
     background-position: 0 0;
   }
   to {
-    background-position: -1961px 0;
+    background-position: -7660px 0;
   }
 }
-.pontos{
-    font-size: 80px;
-    position: relative;
-    bottom: 350px;
-    left: 30px;
-    color: brown;
+@keyframes moverNaves {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 7660px 0;
+  }
 }
 
-
-
-@keyframes mover{
-    from{left: 105%;}
-    to{left: -10%;}
+@keyframes moverPersonagemCima{
+    from {
+    top: 640px;
+  }
+  to {
+    top: 240px;
+  }
 }
 
-@keyframes pular{
-    0%{
-        transform: translateY(0);
-    }
-    50%{
-        transform: translateY(-300px);
-    }
-    100%{
-        transform: translateY(0);
-    }
+@keyframes moverPersonagemBaixo{
+    from {
+    top: 240px;
+  }
+  to {
+    top: 640px;
+  }
+}
+.camada0{
+  z-index: 1;
+  transition: 3s;
+}
+.personagemCapote{
+    animation: girar360 1s linear;
+}
+
+@keyframes girar360 {
+    from { }
+    to   { transform: rotate(360deg); top: 200px; left:-500px;}
 }
