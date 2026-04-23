@@ -7,9 +7,11 @@ let dificuldade = 1
 let spanPontuação = document.getElementById('pontuacao')
 let spanNivel = document.getElementById('nivel')
 let camada0 = document.getElementById('camada0')
+let podeColidir = true
+let podeMover = true
 
 document.addEventListener('keydown', function(event){
-    if(event.key === 'ArrowUp'){
+    if(event.key === 'ArrowUp' && podeMover){
         if(personagem.classList.contains('personagemSubir')){
 
         }else{
@@ -19,16 +21,17 @@ document.addEventListener('keydown', function(event){
             setTimeout(() => {
                 personagemImg.src = "img/personagem.png";
             }, 200);
+            podeColidir = false
+            setTimeout(() => {
+                podeColidir = true;
+            }, 70);
         }
 
     }
     if(event.key === 'p'){
-        personagem.classList.add('personagemCapote')
-        setTimeout(() => {
-                personagem.classList.remove('personagemCapote')
-            }, 1000);
+       
     }
-    if(event.key === 'ArrowDown'){
+    if(event.key === 'ArrowDown' && podeMover){
         if(personagem.classList.contains('personagemDescer')){
 
         }else{
@@ -38,6 +41,10 @@ document.addEventListener('keydown', function(event){
             setTimeout(() => {
                 personagemImg.src = "img/personagem.png";
             }, 200);
+            podeColidir = false
+            setTimeout(() => {
+                podeColidir = true;
+            }, 70);
 
         }
     }
@@ -181,4 +188,66 @@ function gerarFrequenciaObstaculo(max){
 
 function gerarLocalObstaculo(){
     return Math.floor(Math.random() * 2) + 1;
+}
+
+function colidiu(el1, el2) {
+    const a = el1.getBoundingClientRect();
+    const b = el2.getBoundingClientRect();
+
+    return (
+        a.right >= b.left &&
+        a.left <= b.right &&
+        a.bottom >= b.top &&
+        a.top <= b.bottom
+    );
+}
+
+setInterval(() => {
+
+    if (!personagem || !podeColidir) return;
+
+    const elementos = document.querySelectorAll('.obstaculo');
+
+    for (let obs of elementos) {
+        if (colidiu(personagem, obs)) {
+
+            explosao()
+
+            podeColidir = false;
+            podeMover = false
+
+            setTimeout(() => {
+                podeMover = true;
+            }, 1000);
+
+            setTimeout(() => {
+                podeColidir = true;
+            }, 3000);
+
+            break; // para o loop após colisão
+        }
+    }
+
+}, 50);
+
+function explosao(){
+     personagem.classList.add('personagemCapote')
+        personagemImg.src = 'img/personagemExplosao1.png'
+        setTimeout(()=>{
+            personagemImg.src = 'img/personagemExplosao1.png'
+        },60)
+        setTimeout(()=>{
+            personagemImg.src = 'img/personagemExplosao2.png'
+        },60)
+        setTimeout(()=>{
+            personagemImg.src = 'img/personagemExplosao3.png'
+        },60)
+        setTimeout(()=>{
+            personagemImg.src = 'img/personagemExplosao4.png'
+        },60)
+        setTimeout(() => {
+                personagem.classList.remove('personagemCapote')
+                personagemImg.src = 'img/personagem.png'
+
+            }, 1000);
 }
