@@ -3,6 +3,7 @@ body{
  margin: 0;
  color: white;
  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ background-color: black;
 }
 .container{
     height: 1200px;
@@ -83,6 +84,57 @@ body{
   position: absolute;
   top: 20px;
   left: 20px;
+}
+.camadaGameOver{
+  position: absolute;
+  height: 600px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.camada-2{
+  top: -600px;
+  background-image: url(img/gameover1.png);
+}
+
+.camada-3{
+  top: 9200px;
+  background-image: url(img/gameover2.png);
+}
+.gameOverCima{
+  animation: gameOverCima 2s linear;
+  animation-fill-mode: forwards;
+}
+.gameOverBaixo{
+  animation: gameOverBaixo 2s linear;
+  animation-fill-mode: forwards;
+}
+
+.botaoGameOver{
+  position: relative;
+  height: 116px;
+  width: 436px;
+  cursor: pointer;
+}
+.retry{
+  top: 101px;
+}
+.retry:hover{
+  background-image: url('img/retry.png');
+}
+.retry:active{
+  background-image: url('img/retryActivated.png');
+}
+.mainMenu{
+  top: 140px;
+}
+.mainMenu:hover{
+  background-image: url('img/mainMenu.png');
+}
+.mainMenu:active{
+  background-image: url('img/mainMenuActivated.png');
 }
 
 .obstaculo{
@@ -170,6 +222,25 @@ body{
     top: 640px;
   }
 }
+
+@keyframes gameOverCima{
+  from{
+    top: -600px;
+  }
+  to{
+    top: 0;
+  }
+}
+
+@keyframes gameOverBaixo{
+  from{
+    top: 1200px;
+  }
+  to{
+    top: 600px;
+  }
+}
+
 .camada0{
   z-index: 1;
   transition: 3s;

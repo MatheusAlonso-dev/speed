@@ -9,6 +9,7 @@ let spanNivel = document.getElementById('nivel')
 let camada0 = document.getElementById('camada0')
 let podeColidir = true
 let podeMover = true
+let vida = 3
 
 document.addEventListener('keydown', function(event){
     if(event.key === 'ArrowUp' && podeMover){
@@ -28,8 +29,8 @@ document.addEventListener('keydown', function(event){
         }
 
     }
-    if(event.key === 'p'){
-       
+    if(event.key === 't'){
+       gameover()
     }
     if(event.key === 'ArrowDown' && podeMover){
         if(personagem.classList.contains('personagemDescer')){
@@ -210,25 +211,50 @@ setInterval(() => {
 
     for (let obs of elementos) {
         if (colidiu(personagem, obs)) {
+            vida --
 
             explosao()
 
             podeColidir = false;
             podeMover = false
 
-            setTimeout(() => {
-                podeMover = true;
-            }, 1000);
+            
 
-            setTimeout(() => {
-                podeColidir = true;
-            }, 3000);
+            if(vida <= 0){
+                setTimeout(() => {
+                    personagem.remove()
+                }, 1000);
+
+                gameover()
+
+            }else{
+                setTimeout(() => {
+                    podeMover = true;
+                }, 1000);
+
+                setTimeout(() => {
+                    podeColidir = true;
+                }, 3000);
+            }
+
 
             break; // para o loop após colisão
         }
     }
 
-}, 50);
+}, 70);
+
+function gameover(){
+    let gameOverCima = document.getElementById('camada-2')
+    let gameOverBaixo = document.getElementById('camada-3')
+
+    gameOverCima.classList.add('gameOverCima')
+    gameOverBaixo.classList.add('gameOverBaixo')
+
+    setTimeout(() => {
+        container.style.display = 'none'
+    }, 3000);
+}
 
 function explosao(){
      personagem.classList.add('personagemCapote')
@@ -250,4 +276,8 @@ function explosao(){
                 personagemImg.src = 'img/personagem.png'
 
             }, 1000);
+}
+
+function retry(){
+    location.reload()
 }
