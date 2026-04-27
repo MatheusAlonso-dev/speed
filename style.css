@@ -119,6 +119,15 @@ body{
   align-items: center;
   
 }
+.painelGameOver{
+  position: absolute;
+  top: 60px;
+  left: 180px;
+  font-size: 30px;
+}
+.painelGameOver h1{
+  text-shadow: -15px 15px 10px black;
+}
 .camada-2{
   top: -600px;
   background-image: url(img/gameover1.png);
@@ -197,6 +206,9 @@ body{
 }
 .obstaculoNivel7{
   animation: obstaculo 2.3s linear ;
+}
+.obstaculoNivel8{
+  animation: obstaculo 2s linear ;
 }
 .obstaculoImg{
       position: absolute;

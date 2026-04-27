@@ -4,8 +4,10 @@ let container = document.getElementById('container')
 let rodando = true
 let pontos = 0
 let dificuldade = 1
-let spanPontuação = document.getElementById('pontuacao')
+let spanPontuacao = document.getElementById('pontuacao')
 let spanNivel = document.getElementById('nivel')
+let spanPontuacaoGameOver = document.getElementById('scoreGameOver')
+let spanNivelGameOver = document.getElementById('nivelGameOver')
 let camada0 = document.getElementById('camada0')
 let podeColidir = true
 let podeMover = true
@@ -56,12 +58,14 @@ document.addEventListener('keydown', function(event){
 
 
 function play(){
+    if(rodando === false) return
     if(pontos == 20) dificuldade = 2
     if(pontos == 40) dificuldade = 3
     if(pontos == 60) dificuldade = 4
     if(pontos == 80) dificuldade = 5
     if(pontos == 100) dificuldade = 6
     if(pontos == 150) dificuldade = 7
+    if(pontos == 200) dificuldade = 8
 
 
     pontos++
@@ -69,7 +73,9 @@ function play(){
     document.getElementById('pontuacao').textContent = pontos
 
     spanNivel.textContent = dificuldade
-    spanPontuação.textContent = pontos
+    spanPontuacao.textContent = pontos
+    spanNivelGameOver.textContent = dificuldade
+    spanPontuacaoGameOver.textContent = pontos
     let novo = document.createElement('div');
     let novoImg = document.createElement('img')
     novoImg.src = 'img/nave3.png'
@@ -176,6 +182,20 @@ function play(){
             }
             setTimeout(play, 0.5 * 1000);
         break;
+        case 8:
+            camada0.style.backgroundColor = 'rgba(0, 0, 0, 0.82)' 
+            frequenciaObstaculo = gerarFrequenciaObstaculo(1)
+            if(frequenciaObstaculo === 1){
+                if(localObstaculo === 1){
+                    novo.classList.add('obstaculo', 'obstaculoNivel8' ,'obstaculoCima')
+                    container.appendChild(novo)
+                }else{
+                    novo.classList.add('obstaculo', 'obstaculoNivel8' ,'obstaculoBaixo')
+                    container.appendChild(novo)
+                }                
+            }
+            setTimeout(play, 0.5 * 1000);
+        break;
     }
     novo.addEventListener('animationend', () => {
         novo.remove();
@@ -234,6 +254,7 @@ setInterval(() => {
                     personagem.remove()
                 }, 1000);
 
+
                 gameover()
                 document.addEventListener("wheel", function(event) {
                     if (event.ctrlKey) {
@@ -259,6 +280,7 @@ setInterval(() => {
 }, 70);
 
 function gameover(){
+    rodando = false
     let gameOverCima = document.getElementById('camada-2')
     let gameOverBaixo = document.getElementById('camada-3')
 
