@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    overflow: hidden;
+}
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#start{
+    height: 162px;
+    width: 399px;
+    position: absolute;
+    top: 873px;
+    left: 761px;
+    background-image: url(img/start.png);
+    cursor: pointer;
+}
+#start:hover{
+    background-image: url(img/startHover.png);
+}
+#start:active{
+    background-image: url(img/startActivated.png);
+}
