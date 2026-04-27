@@ -10,6 +10,8 @@ let camada0 = document.getElementById('camada0')
 let podeColidir = true
 let podeMover = true
 let vida = 3
+let vida1 = document.getElementById('vida1')
+let vida2 = document.getElementById('vida2')
 
 document.addEventListener('keydown', function(event){
     if(event.key === 'ArrowUp' && podeMover){
@@ -217,6 +219,13 @@ setInterval(() => {
 
             podeColidir = false;
             podeMover = false
+
+            if(vida == 2){
+                vida2.remove()
+            }
+            if(vida == 1){
+                vida1.remove()
+            }
 
             
 
