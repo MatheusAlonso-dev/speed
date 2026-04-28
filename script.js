@@ -78,7 +78,7 @@ function play(){
     spanPontuacaoGameOver.textContent = pontos
     let novo = document.createElement('div');
     let novoImg = document.createElement('img')
-    novoImg.src = 'img/nave3.png'
+    novoImg.src = 'img/nave6.png'
     novoImg.classList.add('obstaculoImg')
     novo.appendChild(novoImg)
     localObstaculo = gerarLocalObstaculo()

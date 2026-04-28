@@ -47,10 +47,14 @@ body{
     
 }
 .camada7{
-        background-image: url(img/7.png);
+        background-image: url(img/fundo.png);
+        top: 0;
+        background-position: 0 0;
+}
+.camada6{
+        background-image: url(img/6.png);
         top: 0;
         animation: moverFundo 500s linear infinite;
-
 }
 .camada5{
         background-image: url(img/5.png);
@@ -62,6 +66,7 @@ body{
         background-image: url(img/4.png);
         top: 0;
         animation: moverFundo 50s linear infinite;
+        filter: blur(2px);
 
 }
 .camada3{
