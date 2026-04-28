@@ -182,7 +182,6 @@ body{
   left: 7660px;
   position: absolute;
   z-index: 2;
-  border: solid 2px blue;
 }
 .obstaculoCima{
   top: 240px;
@@ -226,7 +225,7 @@ body{
     left: 7660px; 
   }
   to{
-    left: -100px;
+    left: -500px;
   }
 }
 

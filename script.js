@@ -14,6 +14,8 @@ let podeMover = true
 let vida = 3
 let vida1 = document.getElementById('vida1')
 let vida2 = document.getElementById('vida2')
+let skinNaves
+let idSkin
 
 document.addEventListener('keydown', function(event){
     if(event.key === 'ArrowUp' && podeMover){
@@ -67,6 +69,22 @@ function play(){
     if(pontos == 150) dificuldade = 7
     if(pontos == 200) dificuldade = 8
 
+    idSkin = gerarSkinNaves()
+
+    if (idSkin <= 40) {
+        skinNaves = 'img/nave1.png';
+    } else if (idSkin <= 44) {
+        skinNaves = 'img/nave2.png';
+    } else if (idSkin <= 46) {
+        skinNaves = 'img/nave3.png';
+    } else if (idSkin <= 48) {
+        skinNaves = 'img/nave4.png';
+    } else if (idSkin <= 49) {
+        skinNaves = 'img/nave5.png';
+    } else if (idSkin <= 50) {
+        skinNaves = 'img/nave6.png';
+    }
+
 
     pontos++
 
@@ -78,7 +96,7 @@ function play(){
     spanPontuacaoGameOver.textContent = pontos
     let novo = document.createElement('div');
     let novoImg = document.createElement('img')
-    novoImg.src = 'img/nave6.png'
+    novoImg.src = skinNaves
     novoImg.classList.add('obstaculoImg')
     novo.appendChild(novoImg)
     localObstaculo = gerarLocalObstaculo()
@@ -207,6 +225,9 @@ play()
 
 function gerarFrequenciaObstaculo(max){
     return Math.floor(Math.random() * max) + 1;
+}
+function gerarSkinNaves(){
+    return Math.floor(Math.random() * 50) + 1;
 }
 
 function gerarLocalObstaculo(){
