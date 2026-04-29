@@ -33,7 +33,6 @@ document.addEventListener('keydown', function(event){
                 podeColidir = true;
             }, 70);
         }
-
     }
     if(event.key === 't'){
        gameover()
@@ -56,8 +55,6 @@ document.addEventListener('keydown', function(event){
         }
     }
 });
-
-
 
 function play(){
     if(rodando === false) return
@@ -85,7 +82,6 @@ function play(){
         skinNaves = 'img/nave6.png';
     }
 
-
     pontos++
 
     document.getElementById('pontuacao').textContent = pontos
@@ -100,7 +96,6 @@ function play(){
     novoImg.classList.add('obstaculoImg')
     novo.appendChild(novoImg)
     localObstaculo = gerarLocalObstaculo()
-
 
     switch(dificuldade){
         case 1:
@@ -220,12 +215,12 @@ function play(){
     });
 }
 
-
 play()
 
 function gerarFrequenciaObstaculo(max){
     return Math.floor(Math.random() * max) + 1;
 }
+
 function gerarSkinNaves(){
     return Math.floor(Math.random() * 50) + 1;
 }
@@ -266,15 +261,12 @@ setInterval(() => {
             }
             if(vida == 1){
                 vida1.remove()
-            }
-
-            
+            }            
 
             if(vida <= 0){
                 setTimeout(() => {
                     personagem.remove()
                 }, 1000);
-
 
                 gameover()
                 document.addEventListener("wheel", function(event) {
@@ -292,7 +284,6 @@ setInterval(() => {
                     podeColidir = true;
                 }, 3000);
             }
-
 
             break; // para o loop após colisão
         }
