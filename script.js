@@ -16,6 +16,7 @@ let vida1 = document.getElementById('vida1')
 let vida2 = document.getElementById('vida2')
 let skinNaves
 let idSkin
+let timeoutMouse
 const sons = {
     backgroundMusic: new Audio("sounds/background.mp3"),
     collision: new Audio("sounds/explosion.mp3"),
@@ -66,6 +67,17 @@ document.addEventListener('keydown', function(event){
         }
     }
 });
+
+document.addEventListener("mousemove", () => {
+
+    mostrarCursor()
+
+    clearTimeout(timeoutMouse);
+
+    timeoutMouse = setTimeout(() => {
+        esconderCursor()
+    }, 2000)
+})
 
 function play(){
     if(rodando === false) return
@@ -358,4 +370,12 @@ function tocarSom(nome){
     const som = sons[nome];
     som.currentTime = 0;
     som.play();
+}
+
+function esconderCursor() {
+    document.body.style.cursor = "none";
+}
+
+function mostrarCursor() {
+    document.body.style.cursor = "default";
 }
