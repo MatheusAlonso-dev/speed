@@ -16,8 +16,19 @@ let vida1 = document.getElementById('vida1')
 let vida2 = document.getElementById('vida2')
 let skinNaves
 let idSkin
+const sons = {
+    backgroundMusic: new Audio("sounds/background.mp3"),
+    collision: new Audio("sounds/explosion.mp3"),
+    gameover: new Audio("sounds/gameover.mp3")
+}
+sons.backgroundMusic.loop = true
+sons.backgroundMusic.volume = 0.3
+sons.collision.volume = 0.7
+sons.gameover.volume = 1
+
 
 document.addEventListener('keydown', function(event){
+    sons.backgroundMusic.play()
     if(event.key === 'ArrowUp' && podeMover){
         if(personagem.classList.contains('personagemSubir')){
 
@@ -58,13 +69,22 @@ document.addEventListener('keydown', function(event){
 
 function play(){
     if(rodando === false) return
-    if(pontos == 20) dificuldade = 2
+    if(pontos == 20) dificuldade = 2 
     if(pontos == 40) dificuldade = 3
     if(pontos == 60) dificuldade = 4
     if(pontos == 80) dificuldade = 5
-    if(pontos == 100) dificuldade = 6
-    if(pontos == 150) dificuldade = 7
-    if(pontos == 200) dificuldade = 8
+    if(pontos == 100) {
+        dificuldade = 6
+        sons.backgroundMusic.playbackRate = 1.6;
+    }
+    if(pontos == 150) {
+        dificuldade = 7
+        sons.backgroundMusic.playbackRate = 1.7;
+    }
+    if(pontos == 200) {
+        dificuldade = 8
+        sons.backgroundMusic.playbackRate = 1.9;
+    }
 
     idSkin = gerarSkinNaves()
 
@@ -112,7 +132,7 @@ function play(){
             setTimeout(play, 1 * 1000);
         break;
         case 2:
-            camada0.style.backgroundColor = 'rgba(0, 0, 255, 0.106)'
+            camada0.style.backgroundColor = 'rgba(111, 0, 171, 0.11)'           
             frequenciaObstaculo = gerarFrequenciaObstaculo(2)
             if(frequenciaObstaculo === 1){
                 if(localObstaculo === 1){
@@ -126,7 +146,7 @@ function play(){
             setTimeout(play, 1 * 1000);
         break;
         case 3:
-            camada0.style.backgroundColor = 'rgba(0, 13, 255, 0.232)'
+            camada0.style.backgroundColor = 'rgba(0, 0, 109, 0.24)'
             frequenciaObstaculo = gerarFrequenciaObstaculo(2)
             if(frequenciaObstaculo === 1){
                 if(localObstaculo === 1){
@@ -285,13 +305,16 @@ setInterval(() => {
                 }, 3000);
             }
 
-            break; // para o loop após colisão
+            break;
         }
     }
 
 }, 70);
 
 function gameover(){
+    setTimeout(() => {
+        tocarSom("gameover")
+    }, 1500);
     rodando = false
     let gameOverCima = document.getElementById('camada-2')
     let gameOverBaixo = document.getElementById('camada-3')
@@ -305,6 +328,7 @@ function gameover(){
 }
 
 function explosao(){
+    tocarSom("collision")
      personagem.classList.add('personagemCapote')
         personagemImg.src = 'img/personagemExplosao1.png'
         setTimeout(()=>{
@@ -328,4 +352,10 @@ function explosao(){
 
 function retry(){
     location.reload()
+}
+
+function tocarSom(nome){
+    const som = sons[nome];
+    som.currentTime = 0;
+    som.play();
 }
